@@ -9,7 +9,7 @@ If not argument is provided the script will run 4 benchmark examples:
 3. submit_perfect1.txt (perfect hotel_cluster prediction in the first position)
 4. submit_perfect2.txt (perfect hotel_cluster prediction in the second position)
 
-The analog file to test.csv is measure_score.txt (these 10.000 lines are the ones you should run with your algorithm and produce an output file like: submit_*.txt)
+The analog file to test.csv is thistest.csv (these 10.000 lines are the ones you should run with your algorithm and produce an output file like: submit_*.txt)
 
 Once you have produce your file you can measure the efficiency by:
 python MPA5.py submit_YOURFILE.txt

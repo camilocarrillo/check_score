@@ -58,7 +58,9 @@ def compute_score (true,predictions):
 true_hotel_cluster = []
 predictioninput = []
 
-loadTrue("int_hc.txt",true_hotel_cluster)
+true_filename='int_hc.txt'
+print "true file:"+true_filename
+loadTrue(true_filename,true_hotel_cluster)
 
 if(len(sys.argv)==1):
 
