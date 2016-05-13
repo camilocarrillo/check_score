@@ -14,10 +14,11 @@ def loadTrue (filename,true):
             true.append(int(line.split()[1]))
         else:
             first = False
-    print len(true)
+    #print len(true)
     return
 
 def loadPrediction (filename,predictions):
+    del predictions[:]
     f = open(filename, 'r')
     lines = 1
     for line in f:
@@ -28,11 +29,11 @@ def loadPrediction (filename,predictions):
             array_hotel_clusters[:] = [int(i) for i in hotel_clusters.split(' ')]
             predictions.append(array_hotel_clusters)
         lines=lines+1
-    print len(predictions)
+    #print len(predictions)
     return
 
 def compute_score (true,predictions):
-    sum = 0.
+    assert (len(true)==len(predictions))
     #print true[0],predictions[0]
     #i=0
     P = 0
@@ -50,24 +51,38 @@ def compute_score (true,predictions):
     len_predictions=float(len(predictions))
     score = P/len_predictions
     #error = math.sqrt(score(1.-score)/len_predictions)
-    #rint score,"+/-",error
-    print score
-    return 
+    #print score,"+/-",error
+    #print score
+    return score
 
 true_hotel_cluster = []
-predictiontop5 = []
-predictionrandom5 = []
 predictioninput = []
-#loadTrue("int_hc_100.txt",true)
-#loadPrediction('submit_top5_100.txt',prediction)
+
 loadTrue("int_hc.txt",true_hotel_cluster)
-loadPrediction('submit_top5.txt',predictiontop5)
-loadPrediction('submit_random5.txt',predictionrandom5)
-print "for Top 5:"
-compute_score(true_hotel_cluster,predictiontop5)
-print "for Random:"
-compute_score(true_hotel_cluster,predictionrandom5)
-print "for "+sys.argv[1]
-loadPrediction(sys.argv[1],predictioninput)
-compute_score(true_hotel_cluster,predictioninput)
+
+if(len(sys.argv)==1):
+
+    print "Benchmarks:"
+#benchmark 1
+    loadPrediction('submit_top5.txt',predictioninput)
+    print "for Top 5:",compute_score(true_hotel_cluster,predictioninput)
+
+#benchmark 2
+    loadPrediction('submit_random5.txt',predictioninput)
+    print "for Random:",compute_score(true_hotel_cluster,predictioninput)
+    
+#benchmark 3
+    loadPrediction('submit_perfect1.txt',predictioninput)
+    print "for Perfect1:",compute_score(true_hotel_cluster,predictioninput)
+
+#benchmark 4
+    loadPrediction('submit_perfect2.txt',predictioninput)
+    print "for Perfect2:",compute_score(true_hotel_cluster,predictioninput)
+
+else:
+    
+    print "\nInput Files:"
+    for argument in sys.argv[1:]:
+        loadPrediction(argument,predictioninput)
+        print argument,compute_score(true_hotel_cluster,predictioninput)
 
