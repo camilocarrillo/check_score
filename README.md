@@ -1,15 +1,15 @@
-# check_score
+# measuring the score
 
 To measure the score of any algorithm I have filtered train.csv just taking into account the is_booking=1 lines, there are ~3M lines (~10% of the original train.csv). 
 
 The output was divided in two parts each with 1.5M lines.
 
-## The first half, 1.5M lines are meant to "train" your algorithm or to extract any information (recomended to avoid bias in the score estimation) 
-- A file with the first 1.5M lines meant for the training was generated ~150M: wget http://test-carrillo.web.cern.ch/test-carrillo/kag/exp/train_is_booking_A.csv
+- The first half, 1.5M lines are meant to "train" your algorithm or to extract any information (recomended to avoid bias in the score estimation) 
+-- A file with the first 1.5M lines meant for the training was generated ~150M: wget http://test-carrillo.web.cern.ch/test-carrillo/kag/exp/train_is_booking_A.csv
 
-## 2. The second 1.5M lines are meant to measure the score of your algorithm.  
-- The file with the true hotel_clusters called int_hc.txt was generated from the second half. (in this repo)
-- A file called mytest.csv, with the same format of test.csv was generated from the second half. 
+- The second 1.5M lines are meant to measure the score of your algorithm.  
+-- The file with the true hotel_clusters called int_hc.txt was generated from the second half. (in this repo)
+-- A file called mytest.csv, with the same format of test.csv was generated from the second half. 
 	     The procedure was: First add the id column and then remove is_booking,cnt and hotel_cluster columns.
 	    ~150M. wget http://test-carrillo.web.cern.ch/test-carrillo/kag/exp/mytest.csv
 
