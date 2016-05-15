@@ -8,9 +8,9 @@ The output after filtering train.csv with is_booking=1 was divided in **two** pa
 
 1. The second 1.5M lines are meant to measure the score of your algorithm.  
 
--- The file with the true hotel_clusters called int_hc.txt was generated from the second half. (in this repo)
+--* The file with the true hotel_clusters called int_hc.txt was generated from the second half. (in this repo)
 
--- A file called mytest.csv, with the same format of test.csv was generated from the second half. 
+--* A file called mytest.csv, with the same format of test.csv was generated from the second half. 
 The procedure was: First add the id column and then remove is_booking,cnt and hotel_cluster columns. 
 ~150M. wget http://test-carrillo.web.cern.ch/test-carrillo/kag/exp/mytest.csv
 
