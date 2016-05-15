@@ -3,6 +3,7 @@ To measure the score of any algorithm I have filtered train.csv just taking into
 ## train and test samples for this script
 
 The output after filtering train.csv with is_booking=1 was divided in **two** parts each with 1.5M lines.
+
 1. The first half, 1.5M lines are meant to "train" your algorithm or to extract any information (recomended to avoid bias in the score estimation) A file with the first 1.5M lines meant for the training was generated ~150M: wget http://test-carrillo.web.cern.ch/test-carrillo/kag/exp/train_is_booking_A.csv
 
 1. The second 1.5M lines are meant to measure the score of your algorithm.  
