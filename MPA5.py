@@ -42,9 +42,10 @@ def compute_score (true,predictions):
         for j in range(0,len(prediction)):
             if(prediction[j] == true[i]):
                 P+=(1/float(j+1.))
+                break 
         #if (i==0):
         #    print "\n"
-        #if (i<10):
+        #if (i<100):
         #    print "i:",i,"true:",true[i],"prediction:",prediction,"P:",P
     
     len_predictions=float(len(predictions))

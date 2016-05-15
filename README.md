@@ -1,30 +1,40 @@
 # check_score
 
-python MPA5.py int_hc.txt will measure the score for input files:
+To measure the score of any algorithm I have filtered train.csv just taking into account the is_booking=1 lines, there are ~3M lines (~10% of the original train.csv). 
 
-The first argument is the file with the true hotel clusters (id hotel_cluster)
+The output was divided in two parts each with 1.5M lines.
 
-If not extra-argumens are provided the script will run 4 benchmark examples:
+## The first half, 1.5M lines are meant to "train" your algorithm or to extract any information (recomended to avoid bias in the score estimation) 
+- A file with the first 1.5M lines meant for the training was generated ~150M: wget http://test-carrillo.web.cern.ch/test-carrillo/kag/exp/train_is_booking_A.csv
 
-1. submit_top5.txt (top hotel_clusters in the trainig samples)
-2. submit_random5.txt (random integers organized in the right output format)
-3. submit_perfect1.txt (perfect hotel_cluster prediction in the first position)
-4. submit_perfect2.txt (perfect hotel_cluster prediction in the second position)
+## 2. The second 1.5M lines are meant to measure the score of your algorithm.  
+- The file with the true hotel_clusters called int_hc.txt was generated from the second half. (in this repo)
+- A file called mytest.csv, with the same format of test.csv was generated from the second half. 
+	     The procedure was: First add the id column and then remove is_booking,cnt and hotel_cluster columns.
+	    ~150M. wget http://test-carrillo.web.cern.ch/test-carrillo/kag/exp/mytest.csv
 
-This is the output of the script when int_hc.txt as true file is used
-~/d/kaggle/check_score$ python MPA5.py 
+"python MPA5.py int_hc.txt submission_XXX.csv" will measure the score of any algorithm predicting for mytest.csv youralg(mytest.csv)=submission_XXX.csv
+ 
+The first argument is this script is the file with the true hotel clusters (id hotel_cluster)
+
+If not extra-arguments are provided (python MPA5.py int_hc.txt) it will estimate the score of 4 benchmark examples:
+
+- submit_top5.txt (Most Frequent hotel_clusters in the trainig sample the first 1.5M lines with is_booking=1: i.e 91 48 42 59 28)
+- submit_random5.txt (random integers organized in the right output format)
+- submit_perfect1.txt (perfect hotel_cluster prediction in the first position)
+- submit_perfect2.txt (perfect hotel_cluster prediction in the second position)
+
+This is the output of the script:
+<script>
+python MPA5.py int_hc.txt 
 true file:int_hc.txt
 Benchmarks:
-for Top 5: 0.053853
-for Random: 0.0220808333333
+for Top 5: 0.0725446999999
+for Random: 0.0224846777778
 for Perfect1: 1.0
 for Perfect2: 0.5
+</script>
 
-This is what we get from the Public Score
-Random Guess Benchmark	0.02260
+This is what we see in the Public Score
 Most Frequent Benchmark	0.05949
-
-The analog file to test.csv is thistest.csv (these 100k lines are the ones you should run with your algorithm and produce an output file like: submit_XXX.csv)
-
-Once you have produce your file you can measure the efficiency by:
-python MPA5.py submit_XXX.csv
+Random Guess Benchmark	0.02260
