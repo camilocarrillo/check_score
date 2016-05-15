@@ -2,17 +2,20 @@
 
 To measure the score of any algorithm I have filtered train.csv just taking into account the is_booking=1 lines, there are ~3M lines (~10% of the original train.csv). 
 
-The output was divided in two parts each with 1.5M lines.
+## train and test samples for this script
 
-- The first half, 1.5M lines are meant to "train" your algorithm or to extract any information (recomended to avoid bias in the score estimation) 
--- A file with the first 1.5M lines meant for the training was generated ~150M: wget http://test-carrillo.web.cern.ch/test-carrillo/kag/exp/train_is_booking_A.csv
+The output after filtering train.csv with is_booking was divided in two parts each with 1.5M lines.
 
-- The second 1.5M lines are meant to measure the score of your algorithm.  
--- The file with the true hotel_clusters called int_hc.txt was generated from the second half. (in this repo)
--- A file called mytest.csv, with the same format of test.csv was generated from the second half. 
-	     The procedure was: First add the id column and then remove is_booking,cnt and hotel_cluster columns.
-	    ~150M. wget http://test-carrillo.web.cern.ch/test-carrillo/kag/exp/mytest.csv
+1. The first half, 1.5M lines are meant to "train" your algorithm or to extract any information (recomended to avoid bias in the score estimation) 
+2. A file with the first 1.5M lines meant for the training was generated ~150M: wget http://test-carrillo.web.cern.ch/test-carrillo/kag/exp/train_is_booking_A.csv
 
+The second 1.5M lines are meant to measure the score of your algorithm.  
+1. The file with the true hotel_clusters called int_hc.txt was generated from the second half. (in this repo)
+2. A file called mytest.csv, with the same format of test.csv was generated from the second half. 
+... The procedure was: First add the id column and then remove is_booking,cnt and hotel_cluster columns. 
+... ~150M. wget http://test-carrillo.web.cern.ch/test-carrillo/kag/exp/mytest.csv
+
+## running the script 
 "python MPA5.py int_hc.txt submission_XXX.csv" will measure the score of any algorithm predicting for mytest.csv youralg(mytest.csv)=submission_XXX.csv
  
 The first argument is this script is the file with the true hotel clusters (id hotel_cluster)
@@ -25,6 +28,7 @@ If not extra-arguments are provided (python MPA5.py int_hc.txt) it will estimate
 - submit_perfect2.txt (perfect hotel_cluster prediction in the second position)
 
 This is the output of the script:
+<html>
 <script>
 python MPA5.py int_hc.txt 
 true file:int_hc.txt
@@ -34,6 +38,7 @@ for Random: 0.0224846777778
 for Perfect1: 1.0
 for Perfect2: 0.5
 </script>
+</html>
 
 This is what we see in the Public Score
 Most Frequent Benchmark	0.05949
