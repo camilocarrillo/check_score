@@ -10,7 +10,10 @@ The output after filtering train.csv with is_booking=1 was divided in **two** pa
 
   * The file with the true hotel_clusters called int_hc.txt was generated from the second half. (in this repo)
 
-  * A file called mytest.csv, with the same format of test.csv was generated from the second half. The procedure was: First add the id column and then remove is_booking,cnt and hotel_cluster columns. ~150M. wget http://test-carrillo.web.cern.ch/test-carrillo/kag/exp/mytest.csv
+  * A file called mytest.csv, with the same format of test.csv was generated from the second half. The procedure was:
+   * the id column
+   * remove is_booking,cnt and hotel_cluster columns. 
+  ~150M. wget http://test-carrillo.web.cern.ch/test-carrillo/kag/exp/mytest.csv
 
 ## running the script 
 "python MPA5.py int_hc.txt submission_XXX.csv" will measure the score of any algorithm predicting for mytest.csv youralg(mytest.csv)=submission_XXX.csv
