@@ -23,7 +23,6 @@ def loadPrediction (filename,predictions):
     lines = 1
     for line in f:
         if lines != 1:
-            id=line.split(',')[0]
             hotel_clusters = line.split(',')[1]
             array_hotel_clusters = []
             array_hotel_clusters[:] = [int(i) for i in hotel_clusters.split(' ')]
@@ -42,14 +41,15 @@ def compute_score (true,predictions):
         prediction=predictions[i]
         for j in range(0,len(prediction)):
             if(prediction[j] == true[i]):
-                #P+=(1/float(j+1.))/float(len(prediction)
                 P+=(1/float(j+1.))
+        #if (i==0):
+        #    print "\n"
         #if (i<10):
-            #print int(100*random.random())," ",int(100*random.random())," ",int(100*random.random())," ",int(100*random.random())," ",int(100*random.random())          
-            #print "i:",i,"prediction:",prediction,"len(prediction)",len(prediction),"true:",true[i],"P:",P
+        #    print "i:",i,"true:",true[i],"prediction:",prediction,"P:",P
     
     len_predictions=float(len(predictions))
     score = P/len_predictions
+    #print P,"/",len_predictions
     #error = math.sqrt(score(1.-score)/len_predictions)
     #print score,"+/-",error
     #print score
@@ -58,12 +58,15 @@ def compute_score (true,predictions):
 true_hotel_cluster = []
 predictioninput = []
 
-true_filename='int_hc.txt'
+true_filename=sys.argv[1]
 print "true file:"+true_filename
 loadTrue(true_filename,true_hotel_cluster)
 
 if(len(sys.argv)==1):
+    print "please provide the first input file with the true hotel clusters format (id hotel_cluster) "
 
+elif(len(sys.argv)==2):
+    print "Only true hotel_clusters provided, running trivial examples, if you want to analyze other file(s) provide it as extra argument(s)"
     print "Benchmarks:"
 #benchmark 1
     loadPrediction('submit_top5.txt',predictioninput)
@@ -81,10 +84,9 @@ if(len(sys.argv)==1):
     loadPrediction('submit_perfect2.txt',predictioninput)
     print "for Perfect2:",compute_score(true_hotel_cluster,predictioninput)
 
-else:
-    
+elif(len(sys.argv)>2):
     print "\nInput Files:"
-    for argument in sys.argv[1:]:
+    for argument in sys.argv[2:]:
         loadPrediction(argument,predictioninput)
         print argument,compute_score(true_hotel_cluster,predictioninput)
 
