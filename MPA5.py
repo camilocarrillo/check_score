@@ -63,31 +63,32 @@ true_filename=sys.argv[1]
 print "true file:"+true_filename
 loadTrue(true_filename,true_hotel_cluster)
 
+
 if(len(sys.argv)==1):
     print "please provide the first input file with the true hotel clusters format (id hotel_cluster) "
 
 elif(len(sys.argv)==2):
     print "Only true hotel_clusters provided, running trivial examples, if you want to analyze other file(s) provide it as extra argument(s)"
-    print "Benchmarks:"
+    print "for Benchmarks: measured (expected)"
 #benchmark 1
     loadPrediction('submit_top5.txt',predictioninput)
-    print "for Top 5:",compute_score(true_hotel_cluster,predictioninput)
+    print "for Top 5:",compute_score(true_hotel_cluster,predictioninput)," (0.059)"
 
 #benchmark 2
     loadPrediction('submit_random5.txt',predictioninput)
-    print "for Random:",compute_score(true_hotel_cluster,predictioninput)
+    print "for Random:",compute_score(true_hotel_cluster,predictioninput)," (0.023)"
     
 #benchmark 3
     loadPrediction('submit_sample.txt',predictioninput)
-    print "for Sample:",compute_score(true_hotel_cluster,predictioninput)
+    print "for Sample:",compute_score(true_hotel_cluster,predictioninput)," (0.017)"
 
 #benchmark 4
     loadPrediction('submit_perfect1.txt',predictioninput)
-    print "for Perfect1:",compute_score(true_hotel_cluster,predictioninput)
+    print "for Perfect1:",compute_score(true_hotel_cluster,predictioninput)," (1.0)"
 
 #benchmark 5
     loadPrediction('submit_perfect2.txt',predictioninput)
-    print "for Perfect2:",compute_score(true_hotel_cluster,predictioninput)
+    print "for Perfect2:",compute_score(true_hotel_cluster,predictioninput)," (0.5)"
 
 elif(len(sys.argv)>2):
     print "\nInput Files:"
