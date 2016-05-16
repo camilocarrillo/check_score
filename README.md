@@ -24,14 +24,17 @@ If not extra-arguments are provided (python MPA5.py int_hc.txt) it will estimate
 - submit_perfect1.txt (perfect hotel_cluster prediction in the first position)
 - submit_perfect2.txt (perfect hotel_cluster prediction in the second position)
 
-This is the output of the script python MPA5.py int_hc.txt
-
+This is the output of the script python MPA5.py int_hc.txt (ran by this script)
 Benchmarks:
-- for Top 5: 0.0725446999999
-- for Random: 0.0224846777778
+- for Top 5: 0.073
+- for Random: 0.022
+- for Sample: 0.019
 - for Perfect1: 1.0
 - for Perfect2: 0.5
 
-This is what we see in the Public Score
-- Most Frequent Benchmark	0.05949
-- Random Guess Benchmark	0.02260
+This is what we see in the Public Score (ran by kaggle score estimation)
+- Most Frequent Benchmark	0.059
+- Random Guess Benchmark	0.023
+- Sample Submission Benchmark 	0.017
+
+Results are compatible, there is an error due to the lower statistics available for this script and also due to the difference spliting by year in the kaggle script, here we are spliting by number of lines.

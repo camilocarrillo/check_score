@@ -78,10 +78,14 @@ elif(len(sys.argv)==2):
     print "for Random:",compute_score(true_hotel_cluster,predictioninput)
     
 #benchmark 3
+    loadPrediction('submit_sample.txt',predictioninput)
+    print "for Sample:",compute_score(true_hotel_cluster,predictioninput)
+
+#benchmark 4
     loadPrediction('submit_perfect1.txt',predictioninput)
     print "for Perfect1:",compute_score(true_hotel_cluster,predictioninput)
 
-#benchmark 4
+#benchmark 5
     loadPrediction('submit_perfect2.txt',predictioninput)
     print "for Perfect2:",compute_score(true_hotel_cluster,predictioninput)
 
