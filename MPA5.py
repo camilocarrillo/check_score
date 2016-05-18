@@ -22,6 +22,7 @@ def loadPrediction (filename,predictions):
     f = open(filename, 'r')
     lines = 1
     for line in f:
+        #print line
         if lines != 1:
             hotel_clusters = line.split(',')[1]
             array_hotel_clusters = []
@@ -38,6 +39,10 @@ def compute_score (true,predictions):
     P = 0
     
     for i in range(0,len(predictions)):
+
+        #if i % 100000 == 0:
+        #    print('Computing score {} lines...'.format(i))
+
         prediction=predictions[i]
         for j in range(0,len(prediction)):
             if(prediction[j] == true[i]):
@@ -90,7 +95,7 @@ elif(len(sys.argv)==2):
     loadPrediction('submit_perfect2.txt',predictioninput)
     print "for Perfect2:",compute_score(true_hotel_cluster,predictioninput)," (0.5)"
 
-elif(len(sys.argv)>2):
+elif len(sys.argv)>2:
     print "\nInput Files:"
     for argument in sys.argv[2:]:
         loadPrediction(argument,predictioninput)
