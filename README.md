@@ -2,7 +2,7 @@
 To measure the score of any algorithm I have filtered train.csv by year/term
 ## train and test samples for this script
 
-The output after filtering train.csv with is_booking=1 was divided in **two** parts each with 1.5M lines.
+The output after filtering train.csv with is_booking=1 was divided in **two** parts:
 
 1. The first file is meant to "train" your algorithm or to extract any information (recomended to avoid bias in the score estimation) A file with 2013+2014-I  meant for the training was generated: wget http://test-carrillo.web.cern.ch/test-carrillo/kag/exp/train20132014I.csv.zip
 

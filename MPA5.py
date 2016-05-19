@@ -1,8 +1,6 @@
 import commands
-from numpy import arange,array,ones,linalg
 import random
 import math
-import numpy as np
 import sys 
 
 def loadTrue (filename,true):
@@ -60,6 +58,7 @@ def compute_score (true,predictions):
     #print score,"+/-",error
     #print score
     return score
+    #return 1000*(score-0.5)
 
 true_hotel_cluster = []
 predictioninput = []
