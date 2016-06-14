@@ -57,8 +57,8 @@ def compute_score (true,predictions):
     #error = math.sqrt(score(1.-score)/len_predictions)
     #print score,"+/-",error
     #print score
-    return score
-    #return 1000*(score-0.5)
+    #return score
+    return 1000*(score-0.5)
 
 true_hotel_cluster = []
 predictioninput = []
