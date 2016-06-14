@@ -1,0 +1,5 @@
+[carrillo@pcwits11] </data08/carrillo/EXP/speedy> $ ./speedy_score.sh ~/workspace/expout/121334.csv-v7_1_batch_True_sequence_567800000srch_destination_id,hotel_country,hotel_market,is_package,user_id,user_location_country,user_location_city.csv
+true file:int_hc_speedy.txt
+
+Input Files:
+/afs/cern.ch/user/c/carrillo/workspace/expout/121334.csv-v7_1_batch_True_sequence_567800000srch_destination_id,hotel_country,hotel_market,is_package,user_id,user_location_country,user_location_city.csv -53.2362717383
